@@ -8,6 +8,7 @@ TagManager:
   - DT_Bool
   - DT_Float
   - DT_Int
+  - PP_String
   layers:
   - Default
   - TransparentFX
