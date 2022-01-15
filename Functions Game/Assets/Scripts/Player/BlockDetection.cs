@@ -149,5 +149,83 @@ public class BlockDetection : MonoBehaviour
                 Debug.Log("You don't have this block! Go grab it.");
             }
         }
+        else if (col.tag == ppBool)
+        {
+            // If the character has the correct block & the plate is not active yet
+            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == true && currentPressurePlate.isActive == false)
+            {
+                currentPressurePlate.isActive = true;
+                playerInventory.hasBoolBlock = false;
+                col.transform.Find("Block").gameObject.SetActive(true);
+                Debug.Log("You placed the " + col.tag + " block!");
+            }
+            // If the character tries to put a block on an already active switch
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            {
+                Debug.Log("This switch is already activated");
+            }
+            // If the character has the wrong blocks and tries to add it to this one
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasStringBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasIntBlock == true))
+            {
+                Debug.Log("You have the wrong block, try putting that elsewhere.");
+            }
+            // If the character doesn't have the block
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == false)
+            {
+                Debug.Log("You don't have this block! Go grab it.");
+            }
+        }
+        else if (col.tag == ppFloat)
+        {
+            // If the character has the correct block & the plate is not active yet
+            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == true && currentPressurePlate.isActive == false)
+            {
+                currentPressurePlate.isActive = true;
+                playerInventory.hasFloatBlock = false;
+                col.transform.Find("Block").gameObject.SetActive(true);
+                Debug.Log("You placed the " + col.tag + " block!");
+            }
+            // If the character tries to put a block on an already active switch
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            {
+                Debug.Log("This switch is already activated");
+            }
+            // If the character has the wrong blocks and tries to add it to this one
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasStringBlock == true || playerInventory.hasIntBlock == true))
+            {
+                Debug.Log("You have the wrong block, try putting that elsewhere.");
+            }
+            // If the character doesn't have the block
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == false)
+            {
+                Debug.Log("You don't have this block! Go grab it.");
+            }
+        }
+        else if (col.tag == ppInt)
+        {
+            // If the character has the correct block & the plate is not active yet
+            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == true && currentPressurePlate.isActive == false)
+            {
+                currentPressurePlate.isActive = true;
+                playerInventory.hasIntBlock = false;
+                col.transform.Find("Block").gameObject.SetActive(true);
+                Debug.Log("You placed the " + col.tag + " block!");
+            }
+            // If the character tries to put a block on an already active switch
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            {
+                Debug.Log("This switch is already activated");
+            }
+            // If the character has the wrong blocks and tries to add it to this one
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasStringBlock == true))
+            {
+                Debug.Log("You have the wrong block, try putting that elsewhere.");
+            }
+            // If the character doesn't have the block
+            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == false)
+            {
+                Debug.Log("You don't have this block! Go grab it.");
+            }
+        }
     }
 }
