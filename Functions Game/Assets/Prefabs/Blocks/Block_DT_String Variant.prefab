@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_DT_String Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5858237387408206095, guid: e05d331f75191534092bf4e3aba05e6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70505bce56aa09b4e86ddbea7c7673f7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e05d331f75191534092bf4e3aba05e6d, type: 3}
 --- !u!4 &4143366340913707140 stripped

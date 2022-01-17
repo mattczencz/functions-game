@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DT_Float
       objectReference: {fileID: 0}
+    - target: {fileID: 5858237387408206095, guid: e05d331f75191534092bf4e3aba05e6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03d9b2fe07025c844b6ba193af0e2c94, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e05d331f75191534092bf4e3aba05e6d, type: 3}
 --- !u!4 &1979449031339455757 stripped
