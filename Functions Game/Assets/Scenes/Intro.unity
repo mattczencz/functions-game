@@ -747,7 +747,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1755820820360830, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
       propertyPath: m_Name
-      value: SM_FX_Glow_Ring_02
+      value: Scene Change Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755820820360830, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 4867189762766904, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
       propertyPath: m_RootOrder
@@ -3479,9 +3483,10 @@ GameObject:
   - component: {fileID: 1262427189}
   - component: {fileID: 1262427191}
   - component: {fileID: 1262427190}
+  - component: {fileID: 1262427192}
   m_Layer: 5
   m_Name: InteractText
-  m_TagString: Untagged
+  m_TagString: iText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3547,11 +3552,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262427188}
   m_CullTransparentMesh: 1
+--- !u!114 &1262427192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262427188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22db97ca3a690f648888a8505ffc9d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1277256442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4742304887599878, guid: 592e533f873a77f4aad3561e2a0ed3fd, type: 3}
   m_PrefabInstance: {fileID: 1839741602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1292584735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1755820820360830, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
+  m_PrefabInstance: {fileID: 359658583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1292584739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292584735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5565580ef28fe434a86e032a6f470929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1292584740
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292584735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: d6cf0e6308e0a4c44b67833737a10902, type: 3}
 --- !u!4 &1313823329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4742304887599878, guid: 592e533f873a77f4aad3561e2a0ed3fd, type: 3}
@@ -4658,6 +4706,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2795998305203363942, guid: f8d6ee509005d4842b1dda1cccf03a35, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     - target: {fileID: 4302332406306334346, guid: f8d6ee509005d4842b1dda1cccf03a35, type: 3}
       propertyPath: m_Name
       value: NPC_Intro
@@ -4666,6 +4718,10 @@ PrefabInstance:
       propertyPath: dialogueBox
       value: 
       objectReference: {fileID: 306878459}
+    - target: {fileID: 6671483748050567977, guid: f8d6ee509005d4842b1dda1cccf03a35, type: 3}
+      propertyPath: charController
+      value: 
+      objectReference: {fileID: 1371727062}
     - target: {fileID: 7706942262509861319, guid: f8d6ee509005d4842b1dda1cccf03a35, type: 3}
       propertyPath: m_Controller
       value: 

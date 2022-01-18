@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockDetection : MonoBehaviour
 {
+    public TextToggle textToggle;
+
     // Accessing Player Controller Script
     public CharacterController charCont;
 
@@ -24,6 +26,10 @@ public class BlockDetection : MonoBehaviour
     string ppBool = "PP_Bool";
     string ppInt = "PP_Int";
     string ppFloat = "PP_Float";
+
+    void Awake() {
+        textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
+    }
 
     // Happens every frame
     private void Update()
@@ -58,6 +64,10 @@ public class BlockDetection : MonoBehaviour
             nearbySwitch = other;
             Debug.Log(nearbySwitch.tag);
         }
+
+        if(other.tag == "Interactable") {
+            textToggle.showText();
+        }
     }
 
     // Only happens when the object exits the trigger area
@@ -75,6 +85,10 @@ public class BlockDetection : MonoBehaviour
             currentPressurePlate = null;
             charCont.canInteract = false;
             nearbySwitch = null;
+        }
+
+        if(other.tag == "Interactable") {
+            textToggle.hideText();
         }
     }
 

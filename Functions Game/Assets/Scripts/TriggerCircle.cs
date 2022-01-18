@@ -8,26 +8,21 @@ public class TriggerCircle : MonoBehaviour
 
     public GameObject dialogueBox;
 
-    private GameObject interactText;
-    
     public CharacterController charController;
 
-    void Awake()
-    {
-        interactText = GameObject.Find("InteractText");
-        interactText.SetActive(false);
+    public TextToggle textToggle;
 
-        charController = GameObject.Find("Player").GetComponent<CharacterController>();
+    void Awake() {
+        textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
     }
 
     void Update()
     {
         if (inRange == true && charController.interacting == false)
         {
-            interactText.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                interactText.SetActive(false);
+                textToggle.hideText();
                 charController.interacting = true;
                 dialogueBox.SetActive(true);
             }
@@ -37,7 +32,7 @@ public class TriggerCircle : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                interactText.SetActive(true);
+                textToggle.showText();
                 charController.interacting = false;
                 dialogueBox.SetActive(false);
             }
@@ -49,7 +44,6 @@ public class TriggerCircle : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = true;
-            Debug.Log("Player can interact with NPC");
         }
     }
 
@@ -57,9 +51,7 @@ public class TriggerCircle : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            interactText.SetActive(false);
             inRange = false;
-            Debug.Log("Player can no longer interact with NPC");
         }
     }
 }
