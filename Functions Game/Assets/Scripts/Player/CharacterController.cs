@@ -5,4 +5,5 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public bool canInteract = false;
+    public bool interacting = false;
 }

@@ -12,6 +12,7 @@ TagManager:
   - PP_Bool
   - PP_Float
   - PP_Int
+  - iText
   layers:
   - Default
   - TransparentFX
