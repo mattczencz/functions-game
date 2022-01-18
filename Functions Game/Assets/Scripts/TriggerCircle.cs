@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class TriggerCircle : MonoBehaviour
 {
+    // Bool to see if player is in circle
     public bool inRange = false;
-
+    
+    // Reference to dialogue game object
     public GameObject dialogueBox;
 
+    // Reference to CharacterController script
     public CharacterController charController;
 
+    // Reference to TextToggle script
     public TextToggle textToggle;
 
     void Awake() {

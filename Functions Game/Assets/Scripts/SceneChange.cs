@@ -5,34 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    
-    // public bool inRange = false;
-    // private GameObject interactText;
-    // public CharacterController charController;
+    // Bool to see if player is in circle
+    public bool inRange = false;
 
-    // void Awake()
-    // {
-    //     interactText = GameObject.Find("InteractText");
-    //     interactText.SetActive(false);
+    // Reference to TextToggle script
+    public TextToggle textToggle;
 
-    //     charController = GameObject.Find("Player").GetComponent<CharacterController>();
-    // }
+    void Awake()
+    {
+        textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
+    }
 
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.tag == "Player")
-    //     {
-    //         inRange = true;
-    //         interactText.SetActive(true);
-    //     }
-    // }
+    void Update()
+    {
+        if (inRange == true && Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
 
-    // void OnTriggerExit(Collider other)
-    // {
-    //     if (other.tag == "Player")
-    //     {
-    //         interactText.SetActive(false);
-    //         inRange = false;
-    //     }
-    // }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = true;
+            Debug.Log(inRange);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+            Debug.Log(inRange);
+        }
+    }
 }
