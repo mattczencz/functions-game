@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 2795932164392951765}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6271af28fe7d9e458f32b1e08e8d4ee, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -91,7 +91,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1460785517083138, guid: 64500f6234352734ea891f09228b54c8, type: 3}
       propertyPath: m_Name
-      value: SM_Pawn_Cower_Female_01
+      value: NPC_Model
       objectReference: {fileID: 0}
     - target: {fileID: 4822838193058842, guid: 64500f6234352734ea891f09228b54c8, type: 3}
       propertyPath: m_RootOrder
@@ -157,7 +157,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1821000302353382, guid: 6ab009d911161b44eb92cefea2e6577f, type: 3}
       propertyPath: m_Name
-      value: SM_Icon_SpeechBubble_01
+      value: ChatBubble
       objectReference: {fileID: 0}
     - target: {fileID: 4083976819772636, guid: 6ab009d911161b44eb92cefea2e6577f, type: 3}
       propertyPath: m_RootOrder
@@ -228,7 +228,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1755820820360830, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
       propertyPath: m_Name
-      value: SM_FX_Glow_Ring_02 (1)
+      value: InteractRing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755820820360830, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 4867189762766904, guid: 3051c727a9e218f4eaff572b5d1e8771, type: 3}
       propertyPath: m_RootOrder
