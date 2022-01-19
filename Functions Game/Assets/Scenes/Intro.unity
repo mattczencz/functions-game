@@ -1741,6 +1741,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575459, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575459, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575459, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575460, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575461, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: freeSpeed.walkSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062558333330575462, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3062558333330575463, guid: 81b159b0b2f4081489d9ac35229b6b7f, type: 3}
       propertyPath: m_RootOrder
       value: 2
