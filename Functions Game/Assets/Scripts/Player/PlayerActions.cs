@@ -21,5 +21,10 @@ public class PlayerActions : MonoBehaviour
             GetComponent<vThirdPersonInput>().enabled = true;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
