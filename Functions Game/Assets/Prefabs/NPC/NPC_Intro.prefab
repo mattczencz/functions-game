@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 2795932164392951765}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6271af28fe7d9e458f32b1e08e8d4ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inRange: 0
+  dialogueBox: {fileID: 0}
+  playerActions: {fileID: 0}
+  textToggle: {fileID: 0}
 --- !u!1 &4302332406306334346
 GameObject:
   m_ObjectHideFlags: 0

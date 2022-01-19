@@ -29,7 +29,6 @@ public class SceneChange : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = true;
-            Debug.Log(inRange);
         }
     }
 
@@ -38,7 +37,6 @@ public class SceneChange : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
-            Debug.Log(inRange);
         }
     }
 }

@@ -7,7 +7,7 @@ public class BlockDetection : MonoBehaviour
     public TextToggle textToggle;
 
     // Accessing Player Controller Script
-    public CharacterController charCont;
+    public PlayerActions playerActions;
 
     // Accessing Player Inventory Script
     public PlayerInventory playerInventory;
@@ -29,6 +29,7 @@ public class BlockDetection : MonoBehaviour
 
     void Awake() {
         textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
+        playerActions = GetComponentInParent<PlayerActions>();
     }
 
     // Happens every frame
@@ -52,14 +53,14 @@ public class BlockDetection : MonoBehaviour
     {
         if (other.tag == dtString || other.tag == dtBool || other.tag == dtFloat || other.tag == dtInt)
         {
-            charCont.canInteract = true;
+            playerActions.canInteract = true;
             nearbyBlock = other;
-            Debug.Log("Can I interact? " + charCont.canInteract);
+            Debug.Log("Can I interact? " + playerActions.canInteract);
         }
 
         if (other.tag == ppString || other.tag == ppBool || other.tag == ppFloat || other.tag == ppInt)
         {
-            charCont.canInteract = true;
+            playerActions.canInteract = true;
             currentPressurePlate = other.GetComponent<PressurePlateActiveCheck>();
             nearbySwitch = other;
             Debug.Log(nearbySwitch.tag);
@@ -75,15 +76,15 @@ public class BlockDetection : MonoBehaviour
     {
         if (other.tag == dtString || other.tag == dtBool || other.tag == dtFloat || other.tag == dtInt)
         {
-            charCont.canInteract = false;
+            playerActions.canInteract = false;
             nearbyBlock = null;
-            Debug.Log("Can I interact? " + charCont.canInteract);
+            Debug.Log("Can I interact? " + playerActions.canInteract);
         }
 
         if (other.tag == ppString || other.tag == ppBool || other.tag == ppFloat || other.tag == ppInt)
         {
             currentPressurePlate = null;
-            charCont.canInteract = false;
+            playerActions.canInteract = false;
             nearbySwitch = null;
         }
 
@@ -98,7 +99,7 @@ public class BlockDetection : MonoBehaviour
         // Runs through if/else checks to match the tag with the string, then do the appropriate action
         if (col.tag == dtString)
         {
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F))
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F))
             {
                 playerInventory.hasStringBlock = true;
                 Debug.Log("I just picked up the " + col.tag + " block! " + playerInventory.hasStringBlock);
@@ -108,7 +109,7 @@ public class BlockDetection : MonoBehaviour
         }
         else if (col.tag == dtBool)
         {
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F))
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F))
             {
                 playerInventory.hasBoolBlock = true;
                 Debug.Log("I just picked up the " + col.tag + " block! " + playerInventory.hasBoolBlock);
@@ -117,7 +118,7 @@ public class BlockDetection : MonoBehaviour
         }
         else if (col.tag == dtInt)
         {
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F))
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F))
             {
                 playerInventory.hasIntBlock = true;
                 Debug.Log("I just picked up the " + col.tag + " block! " + playerInventory.hasIntBlock);
@@ -126,7 +127,7 @@ public class BlockDetection : MonoBehaviour
         }
         else if (col.tag == dtFloat)
         {
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F))
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F))
             {
                 playerInventory.hasFloatBlock = true;
                 Debug.Log("I just picked up the " + col.tag + " block! " + playerInventory.hasFloatBlock);
@@ -140,7 +141,7 @@ public class BlockDetection : MonoBehaviour
         if (col.tag == ppString)
         {
             // If the character has the correct block & the plate is not active yet
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasStringBlock == true && currentPressurePlate.isActive == false)
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasStringBlock == true && currentPressurePlate.isActive == false)
             {
                 currentPressurePlate.isActive = true;
                 playerInventory.hasStringBlock = false;
@@ -148,17 +149,17 @@ public class BlockDetection : MonoBehaviour
                 Debug.Log("You placed the " + col.tag + " block!");
             }
             // If the character tries to put a block on an already active switch
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
             {
                 Debug.Log("This switch is already activated");
             }
             // If the character has the wrong blocks and tries to add it to this one
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasIntBlock == true))
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasIntBlock == true))
             {
                 Debug.Log("You have the wrong block, try putting that elsewhere.");
             }
             // If the character doesn't have the block
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasStringBlock == false)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasStringBlock == false)
             {
                 Debug.Log("You don't have this block! Go grab it.");
             }
@@ -166,7 +167,7 @@ public class BlockDetection : MonoBehaviour
         else if (col.tag == ppBool)
         {
             // If the character has the correct block & the plate is not active yet
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == true && currentPressurePlate.isActive == false)
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == true && currentPressurePlate.isActive == false)
             {
                 currentPressurePlate.isActive = true;
                 playerInventory.hasBoolBlock = false;
@@ -174,17 +175,17 @@ public class BlockDetection : MonoBehaviour
                 Debug.Log("You placed the " + col.tag + " block!");
             }
             // If the character tries to put a block on an already active switch
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
             {
                 Debug.Log("This switch is already activated");
             }
             // If the character has the wrong blocks and tries to add it to this one
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasStringBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasIntBlock == true))
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasStringBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasIntBlock == true))
             {
                 Debug.Log("You have the wrong block, try putting that elsewhere.");
             }
             // If the character doesn't have the block
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == false)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasBoolBlock == false)
             {
                 Debug.Log("You don't have this block! Go grab it.");
             }
@@ -192,7 +193,7 @@ public class BlockDetection : MonoBehaviour
         else if (col.tag == ppFloat)
         {
             // If the character has the correct block & the plate is not active yet
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == true && currentPressurePlate.isActive == false)
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == true && currentPressurePlate.isActive == false)
             {
                 currentPressurePlate.isActive = true;
                 playerInventory.hasFloatBlock = false;
@@ -200,17 +201,17 @@ public class BlockDetection : MonoBehaviour
                 Debug.Log("You placed the " + col.tag + " block!");
             }
             // If the character tries to put a block on an already active switch
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
             {
                 Debug.Log("This switch is already activated");
             }
             // If the character has the wrong blocks and tries to add it to this one
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasStringBlock == true || playerInventory.hasIntBlock == true))
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasStringBlock == true || playerInventory.hasIntBlock == true))
             {
                 Debug.Log("You have the wrong block, try putting that elsewhere.");
             }
             // If the character doesn't have the block
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == false)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasFloatBlock == false)
             {
                 Debug.Log("You don't have this block! Go grab it.");
             }
@@ -218,7 +219,7 @@ public class BlockDetection : MonoBehaviour
         else if (col.tag == ppInt)
         {
             // If the character has the correct block & the plate is not active yet
-            if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == true && currentPressurePlate.isActive == false)
+            if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == true && currentPressurePlate.isActive == false)
             {
                 currentPressurePlate.isActive = true;
                 playerInventory.hasIntBlock = false;
@@ -226,17 +227,17 @@ public class BlockDetection : MonoBehaviour
                 Debug.Log("You placed the " + col.tag + " block!");
             }
             // If the character tries to put a block on an already active switch
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive == true)
             {
                 Debug.Log("This switch is already activated");
             }
             // If the character has the wrong blocks and tries to add it to this one
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasStringBlock == true))
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock == true || playerInventory.hasFloatBlock == true || playerInventory.hasStringBlock == true))
             {
                 Debug.Log("You have the wrong block, try putting that elsewhere.");
             }
             // If the character doesn't have the block
-            else if (charCont.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == false)
+            else if (playerActions.canInteract == true && Input.GetKeyDown(KeyCode.F) && playerInventory.hasIntBlock == false)
             {
                 Debug.Log("You don't have this block! Go grab it.");
             }

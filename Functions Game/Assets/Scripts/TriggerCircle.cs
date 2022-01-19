@@ -11,33 +11,34 @@ public class TriggerCircle : MonoBehaviour
     public GameObject dialogueBox;
 
     // Reference to CharacterController script
-    public CharacterController charController;
+    public PlayerActions playerActions;
 
     // Reference to TextToggle script
     public TextToggle textToggle;
 
     void Awake() {
         textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
+        playerActions = GameObject.Find("Player").GetComponent<PlayerActions>();
     }
 
     void Update()
     {
-        if (inRange == true && charController.interacting == false)
+        if (inRange == true && playerActions.interacting == false)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 textToggle.hideText();
-                charController.interacting = true;
+                playerActions.interacting = true;
                 dialogueBox.SetActive(true);
             }
         }
 
-        else if (inRange == true && charController.interacting == true)
+        else if (inRange == true && playerActions.interacting == true)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 textToggle.showText();
-                charController.interacting = false;
+                playerActions.interacting = false;
                 dialogueBox.SetActive(false);
             }
         }
