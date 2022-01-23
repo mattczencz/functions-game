@@ -43,7 +43,19 @@ public class BlockDetection : MonoBehaviour
         // As long as there is a nearbyBlock...
         if (nearbyBlock != null)
         {
-            PickUp(nearbyBlock);
+            // If the player already has a block
+            if (playerInventory.invCount > 0)
+            {
+                // Put it back
+                PutBack(nearbyBlock);
+            }
+
+            // Otherwise, if they don't have a block
+            else if (playerInventory.invCount < 1)
+            {
+                // Pick it up
+                PickUp(nearbyBlock);
+            }
         }
 
         if (nearbySwitch != null)
@@ -100,32 +112,23 @@ public class BlockDetection : MonoBehaviour
         }
     }
 
-    // Function that takes in a Collider named col then...
+    // Function that handles picking up the block
     private void PickUp(Collider col)
     {
         GameObject block = col.transform.Find("Block").gameObject;
-        // Runs through if/else checks to match the tag with the string, then do the appropriate action
 
         // string
         if (col.tag == dtString)
         {
             if (playerActions.canInteract)
             {
-                if (playerInventory.hasStringBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    playerInventory.invCount = 0;
-                    playerInventory.hasStringBlock = false;
-                    block.SetActive(true);
-                }
-
-                else if (!playerInventory.hasStringBlock && Input.GetKeyDown(KeyCode.F))
+                if (!playerInventory.hasStringBlock && Input.GetKeyDown(KeyCode.F))
                 {
                     playerInventory.invCount = 1;
                     playerInventory.hasStringBlock = true;
                     block.SetActive(false);
                 }
             }
-
         }
 
         // bool
@@ -133,14 +136,7 @@ public class BlockDetection : MonoBehaviour
         {
             if (playerActions.canInteract)
             {
-                if (playerInventory.hasBoolBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    playerInventory.invCount = 0;
-                    playerInventory.hasBoolBlock = false;
-                    block.SetActive(true);
-                }
-
-                else if (!playerInventory.hasBoolBlock && Input.GetKeyDown(KeyCode.F))
+                if (!playerInventory.hasBoolBlock && Input.GetKeyDown(KeyCode.F))
                 {
                     playerInventory.invCount = 1;
                     playerInventory.hasBoolBlock = true;
@@ -154,14 +150,7 @@ public class BlockDetection : MonoBehaviour
         {
             if (playerActions.canInteract)
             {
-                if (playerInventory.hasIntBlock && Input.GetKeyDown(KeyCode.F))
-                {
-                    playerInventory.invCount = 0;
-                    playerInventory.hasIntBlock = false;
-                    block.SetActive(true);
-                }
-
-                else if (!playerInventory.hasIntBlock && Input.GetKeyDown(KeyCode.F))
+                if (!playerInventory.hasIntBlock && Input.GetKeyDown(KeyCode.F))
                 {
                     playerInventory.invCount = 1;
                     playerInventory.hasIntBlock = true;
@@ -175,18 +164,69 @@ public class BlockDetection : MonoBehaviour
         {
             if (playerActions.canInteract)
             {
+                if (!playerInventory.hasFloatBlock && Input.GetKeyDown(KeyCode.F))
+                {
+                    playerInventory.invCount = 1;
+                    playerInventory.hasFloatBlock = true;
+                    block.SetActive(false);
+                }
+            }
+        }
+    }
+
+    // Function that handles placing back the block on the platform
+    private void PutBack(Collider col)
+    {
+        GameObject block = col.transform.Find("Block").gameObject;
+
+        if (col.tag == dtString)
+        {
+            if (playerActions.canInteract)
+            {
+                if (playerInventory.hasStringBlock && Input.GetKeyDown(KeyCode.F))
+                {
+                    playerInventory.invCount = 0;
+                    playerInventory.hasStringBlock = false;
+                    block.SetActive(true);
+                }
+            }
+        }
+
+        else if (col.tag == dtBool)
+        {
+            if (playerActions.canInteract)
+            {
+                if (playerInventory.hasBoolBlock && Input.GetKeyDown(KeyCode.F))
+                {
+                    playerInventory.invCount = 0;
+                    playerInventory.hasBoolBlock = false;
+                    block.SetActive(true);
+                }
+            }
+        }
+
+        else if (col.tag == dtFloat)
+        {
+            if (playerActions.canInteract)
+            {
                 if (playerInventory.hasFloatBlock && Input.GetKeyDown(KeyCode.F))
                 {
                     playerInventory.invCount = 0;
                     playerInventory.hasFloatBlock = false;
                     block.SetActive(true);
                 }
+            }
+        }
 
-                else if (!playerInventory.hasFloatBlock && Input.GetKeyDown(KeyCode.F))
+        else if (col.tag == dtInt)
+        {
+            if (playerActions.canInteract)
+            {
+                if (playerInventory.hasIntBlock && Input.GetKeyDown(KeyCode.F))
                 {
-                    playerInventory.invCount = 1;
-                    playerInventory.hasFloatBlock = true;
-                    block.SetActive(false);
+                    playerInventory.invCount = 0;
+                    playerInventory.hasIntBlock = false;
+                    block.SetActive(true);
                 }
             }
         }
@@ -342,4 +382,3 @@ public class BlockDetection : MonoBehaviour
         blockErrorUI.SetActive(false);
     }
 }
-
