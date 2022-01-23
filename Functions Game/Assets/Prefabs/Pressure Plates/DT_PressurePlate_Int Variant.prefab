@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: da6fef467b849864e9f248b5506b3b7e, type: 2}
+    - target: {fileID: 5706051380591579899, guid: 4235a4f78413fa44f856bea016d94b82, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ced064e32be0d944acb1ab88661d69e, type: 2}
     - target: {fileID: 8754873841173443226, guid: 4235a4f78413fa44f856bea016d94b82, type: 3}
       propertyPath: m_Name
       value: DT_PressurePlate_Int Variant
