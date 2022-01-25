@@ -314,19 +314,19 @@ public class BlockDetection : MonoBehaviour
             // If the character tries to put a block on an already active switch
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive)
             {
-                Debug.Log("This switch is already activated");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "It looks like this is already active. I should move on!"));
             }
             // If the character has the wrong blocks and tries to add it to this one
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock || playerInventory.hasStringBlock || playerInventory.hasIntBlock))
             {
                 StartCoroutine(ErrorBlink(platformMat));
-                Debug.Log("You have the wrong block, try putting that elsewhere.");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "This block doesn't belong here. I should put it back."));
             }
             // If the character doesn't have the block
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && !playerInventory.hasFloatBlock)
             {
                 StartCoroutine(ErrorBlink(platformMat));
-                Debug.Log("You don't have this block! Go grab it.");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "I don't have any blocks. I should go grab one."));
             }
         }
 
@@ -345,19 +345,19 @@ public class BlockDetection : MonoBehaviour
             // If the character tries to put a block on an already active switch
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && currentPressurePlate.isActive)
             {
-                Debug.Log("This switch is already activated");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "It looks like this is already active. I should move on!"));
             }
             // If the character has the wrong blocks and tries to add it to this one
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && (playerInventory.hasBoolBlock || playerInventory.hasFloatBlock || playerInventory.hasStringBlock))
             {
                 StartCoroutine(ErrorBlink(platformMat));
-                Debug.Log("You have the wrong block, try putting that elsewhere.");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "This block doesn't belong here. I should put it back."));
             }
             // If the character doesn't have the block
             else if (playerActions.canInteract && Input.GetKeyDown(KeyCode.F) && !playerInventory.hasIntBlock)
             {
                 StartCoroutine(ErrorBlink(platformMat));
-                Debug.Log("You don't have this block! Go grab it.");
+                StartCoroutine(BlockErrorMessage(blockErrorText, "I don't have any blocks. I should go grab one."));
             }
         }
     }
