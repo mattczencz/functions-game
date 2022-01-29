@@ -22,7 +22,6 @@ public class InventoryReset : MonoBehaviour
             playerInventory.hasIntBlock = false;
             playerInventory.hasStringBlock = false;
             playerInventory.invCount = 0;
-            Debug.Log("Player passed through the Inventory Reset");
         }
     }
 }
