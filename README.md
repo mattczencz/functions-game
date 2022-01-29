@@ -12,6 +12,8 @@
 
 <i>Pause:</i> "Escape"
 
+Note: Only 1 block can be carried at a time
+
 
 ## Technologies:
 * Unity 3D Game Engine
