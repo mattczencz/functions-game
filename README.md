@@ -10,6 +10,8 @@
 
 <i>Interact:</i> "F" 
 
+<i>Pause:</i> "Escape"
+
 
 ## Technologies:
 * Unity 3D Game Engine
