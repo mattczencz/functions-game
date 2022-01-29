@@ -7,6 +7,16 @@ public class PlayerActions : MonoBehaviour
 {
     public bool canInteract = false;
     public bool interacting = false;
+    public bool gamePaused = false;
+
+    public GameObject pauseMenu;
+
+    void Awake()
+    {
+        pauseMenu = GameObject.Find("PauseMenu");
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
 
     void Update()
     {
@@ -22,9 +32,31 @@ public class PlayerActions : MonoBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gamePaused)
         {
-            Application.Quit();
+            PauseGame();
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && gamePaused)
+        {
+            ResumeGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        gamePaused = true;
+        pauseMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        gamePaused = false;
+        pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

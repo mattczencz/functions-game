@@ -15,40 +15,48 @@ public class PlayerInventory : MonoBehaviour
     public int invCount = 0;
 
     // Text object to update the currently held item
+    public GameObject itemTextObj;
     public Text itemText;
 
 
     void Awake()
     {
-        itemText = GameObject.Find("ItemText").GetComponent<Text>();
+        itemTextObj = GameObject.Find("ItemText");
+        if (itemTextObj != null)
+        {
+            itemText = itemTextObj.GetComponent<Text>();
+        }
     }
 
 
     void Update()
     {
-        if (invCount > 0)
+        if (itemText != null)
         {
-            // Change the holding text to the correct block
-            if (hasStringBlock)
+            if (invCount > 0)
             {
-                itemText.text = "String Block";
+                // Change the holding text to the correct block
+                if (hasStringBlock)
+                {
+                    itemText.text = "String Block";
+                }
+                else if (hasBoolBlock)
+                {
+                    itemText.text = "Bool Block";
+                }
+                else if (hasFloatBlock)
+                {
+                    itemText.text = "Float Block";
+                }
+                else if (hasIntBlock)
+                {
+                    itemText.text = "Int Block";
+                }
             }
-            else if (hasBoolBlock)
+            else
             {
-                itemText.text = "Bool Block";
+                itemText.text = "Nothing";
             }
-            else if (hasFloatBlock)
-            {
-                itemText.text = "Float Block";
-            }
-            else if (hasIntBlock)
-            {
-                itemText.text = "Int Block";
-            }
-        }
-        else
-        {
-            itemText.text = "Nothing";
         }
     }
 }

@@ -33,8 +33,12 @@ public class BlockDetection : MonoBehaviour
     {
         textToggle = GameObject.Find("InteractText").GetComponent<TextToggle>();
         playerActions = GetComponentInParent<PlayerActions>();
+
         blockErrorUI = GameObject.Find("BlockError");
-        blockErrorUI.SetActive(false);
+        if (blockErrorUI != null)
+        {
+            blockErrorUI.SetActive(false);
+        }
     }
 
     // Happens every frame
